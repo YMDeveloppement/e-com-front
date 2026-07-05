@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 export default function Unauthorized() {
     const navigate = useNavigate();
 
-    console.log(JSON.stringify(localStorage.getItem("user")))
     return (
         <>
             <button onClick={() => console.log(status, lodding, error)}>button </button>

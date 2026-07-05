@@ -1,12 +1,13 @@
 import axiosIns from '@/plugins/axiosIns.js'
 import axios from 'axios'
-import React, { use, useState ,useEffect} from 'react'
+import React, { use, useState, useEffect } from 'react'
 import Categories from '@/components/common/categories'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
-
+import { useDispatch } from 'react-redux'
+import { asynCartWithDB } from '@/plugins/store/thunks/cartThunk.js'
 export default function MainSection() {
-
+    const dispatch = useDispatch()
     let [arr_products, setArr_products] = useState([])
     let [img_products, setImg_products] = useState(["/src/assets/imgs/img_product/pro1.jpg", "/src/assets/imgs/img_product/pro2.jpg", "/src/assets/imgs/img_product/pro3.jpg"])
 
@@ -17,11 +18,12 @@ export default function MainSection() {
             })
             .catch(err => console.log(err))
     }, [])
-    
-    function getMe(){
-        axiosIns.get('/me').then((res)=>{
-            console.log(res)
+
+    function getMe() {
+        // dispatch(asynCartWithDB())
+        axiosIns.get('/me').then((res) => {
         })
+
     }
 
     return (
@@ -31,45 +33,7 @@ export default function MainSection() {
                     <Categories />
                 </div>
                 <div className="section-slider col-md-9 col-lg-9  p-0">
-                    <div>
-                        <nav style={{ paddingBottom: '5px' }} className="border-bottom navbar navbar-expand-lg navbar-light default-nav">
-                            <div className="container-fluid ">
-                                <button className="d-none navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span className="navbar-toggler-icon"></span>
-                                </button>
-                                <div className="collapse navbar-collapse" id="navbarNav">
-                                    <ul className="navbar-nav">
-                                        <li className="nav-item">
-                                            <a className="nav-link active" aria-current="page" href="#">Home</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Shop
-                                            </a>
-                                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                                <li><hr className="dropdown-divider" /></li>
-                                                <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link" href="#">Fruits & Vegetables</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link" href="#" >Beverages</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link" href="#">Blog</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link " href="#" >Contact</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
+                    
                     <div className='mainslider m-3'>
                         <div className="mainTitle">
                             <h1 className=''>Welcome to E-ShopStore </h1>

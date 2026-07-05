@@ -1,38 +1,60 @@
-import { useState } from 'react'
-import CardProduct from '../common/cardproduct/cardproduct'
+import { useEffect, useState } from 'react'
+import CardProduct from '@/components/common/cardproduct/cardproduct'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import '@/assets/css/homepage/arrivesection.scss';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
-export default function ArriveSection() {
+export default function ArriveSection({ data_categories }) {
+    const [categories, setCategories] = useState([])
+    const [products, setProducts] = useState([])
 
-    const [volets, setVolets] = useState([
-        { id: 1, title: "Fruits & Vegetables", path_img: "./src/assets/imgs/categories_img/beards.png", rates: 4.5, is_organic: true, discount: 25, price: 1.49, old_price: 1.99, stock: 120 },
-        { id: 2, title: "Baby & Pregnancy", path_img: "./src/assets/imgs/categories_img/beverage.png", rates: 5, is_organic: true, discount: 10, price: 8.99, old_price: 9.99, stock: 45 },
-        { id: 3, title: "Beverages", path_img: "./src/assets/imgs/categories_img/biscuits_snacks.png", rates: 3.5, is_organic: false, discount: 30, price: 2.09, old_price: 2.99, stock: 200 },
-        { id: 4, title: "Meats & Seafood", path_img: "./src/assets/imgs/categories_img/breaksfast.png", rates: 4, is_organic: false, discount: 15, price: 12.74, old_price: 14.99, stock: 30 },
-        { id: 5, title: "Biscuits & Snacks", path_img: "./src/assets/imgs/categories_img/frozen.png", rates: 3, is_organic: false, discount: 40, price: 1.79, old_price: 2.99, stock: 175 },
-        { id: 6, title: "Breads & Bakery", path_img: "./src/assets/imgs/categories_img/grocery.png", rates: 4.5, is_organic: true, discount: 20, price: 2.39, old_price: 2.99, stock: 60 },
-        { id: 7, title: "Breakfast & Dairy", path_img: "./src/assets/imgs/categories_img/pregnancy.png", rates: 4, is_organic: true, discount: 35, price: 3.24, old_price: 4.99, stock: 88 },
-        { id: 8, title: "Frozen Foods", path_img: "./src/assets/imgs/categories_img/vegetable.png", rates: 3.5, is_organic: false, discount: 50, price: 2.49, old_price: 4.99, stock: 15 },
-        { id: 9, title: "Grocery & Staples", path_img: "./src/assets/imgs/categories_img/grocery.png", rates: 4, is_organic: false, discount: 5, price: 5.69, old_price: 5.99, stock: 300 },
-    ]);
+    useEffect(() => {
+        if (!data_categories) return;
+        setCategories(data_categories.categories)
+        setProducts(data_categories.home_categories_products)
+    }, [data_categories])
 
-
+    useEffect(() => {
+        (products ? Object.values(products) : []).map((ele, index) => console.log(index))
+    })
+    
     return (
         <>
-            <div className="mt-5 arrive-section">
-                <div className="ps-4 sectionTitle d-flex align-items-center justify-content-start gap-4 mb-4">
-                    <h4 className='p-0 m-0 '>New Arrivals</h4>
-                    <p className='p-0 m-0 mt-1'>Check out our latest products</p>
-                </div>
-                <div className="row g-1 p-3">
-                    {volets.map((item) => {
-                        return (
-                            <div className="d-flex align-items-center justify-content-center col-6 col-md-4 col-lg-3" key={item.id}>
-                                <CardProduct item={item}></CardProduct>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
+            {
+                (data_categories.categories ? Object.values(data_categories.categories) : []).map((ele, idx) => {
+                    return (
+                        
+                        <div className="swip-catg-prd mx-auto" key={idx}>
+                            
+                            <h5 className='title-catg'>{ele.name} : </h5>
+                            <Swiper
+                                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                                spaceBetween={10}
+                                slidesPerView={'auto'}
+                                navigation={true}
+                            >
+                                {(products ? Object.values(products[ele.slug]) : []).map((item, index) => {
+                                    return (
+                                        <SwiperSlide key={`${idx}-${index}`} >
+                                            <CardProduct className="border-card" key={`${idx}-${index}`} item={item} />
+                                        </SwiperSlide>
+
+                                    )
+                                }
+                                )}
+
+                            </Swiper>
+
+                        </div>
+                    )
+                })
+            }
+
+            
         </>
     )
 }

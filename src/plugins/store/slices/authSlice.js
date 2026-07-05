@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
     loginUser,
     refreshTokenUser
-} from '@/plugins/store/slices/authThunks.js'
+} from '@/plugins/store/thunks/authThunks.js'
 import { Nav } from 'react-bootstrap';
 
 const getinitialState = () => {
@@ -13,7 +13,8 @@ const getinitialState = () => {
         token: dataSession?.token,
         status: 'idle',       // 'idle' | 'loading' | 'succeeded' | 'failed'
         error: null,
-        isAuthenticated: dataSession?.user ? true : false,
+        roles: dataSession?.roles,
+        isAuthenticated: dataSession?.user ? true : false, 
     }
     return initdata
 };
@@ -39,14 +40,14 @@ const authSlice = createSlice({
                 state.error = null;
             })
             .addCase(loginUser.fulfilled, (state, action) => {
-                console.log('action.payload', action.payload)
 
                 state.status = 'succeeded';
                 state.user = action.payload.user;
                 state.token = action.payload.access_token;
+                state.roles = action.payload.roles  ;
                 state.isAuthenticated = true
 
-                localStorage.setItem("userEcom", JSON.stringify({ 'user': state.user, 'token': state.token }));
+                localStorage.setItem("userEcom", JSON.stringify({ 'user': state.user, 'token': state.token  , 'roles' : state.roles}));
             })
             .addCase(loginUser.rejected, (state, action) => {
                 state.status = 'failed';
@@ -54,17 +55,16 @@ const authSlice = createSlice({
             })
             // refresh
             .addCase(refreshTokenUser.fulfilled, (state , action) => {
-                state.token = action.payload.token;
-                console.log('state.token ' , state.token )
+                state.token = action.payload.access_token;
+                state.user = action.payload.user;
+                state.roles = action.payload.roles  ;
                 state.isAuthenticated = true
-                localStorage.setItem("userEcom", JSON.stringify({ 'user': state.user, 'token': state.token }));
-                console.log('Im inside refresh ')
+                localStorage.setItem("userEcom", JSON.stringify({ 'user': state.user, 'token': state.token  , 'roles' : state.roles}));
             })
             .addCase(refreshTokenUser.rejected, (state) => {
-                console.log('Im inside refresh ')
                 state.isAuthenticated = false
                 localStorage.removeItem("userEcom");
-                window.location.href = 'auth/login';
+                // window.location.href = 'auth/login';
             })
 
     }

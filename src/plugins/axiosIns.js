@@ -14,7 +14,7 @@ axiosIns.interceptors.request.use((config) => {
 
   const store = getStore();
   const token = store.getState().auth.token;
-
+  
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -23,7 +23,6 @@ axiosIns.interceptors.request.use((config) => {
 
 axiosIns.interceptors.response.use(
   (res) => {
-    console.log('res', res)
     return res
   },
   async (error) => {
@@ -32,7 +31,7 @@ axiosIns.interceptors.response.use(
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
-        const { refreshTokenUser } = await import('@/plugins/store/slices/authThunks.js');
+        const { refreshTokenUser } = await import('@/plugins/store/thunks/authThunks.js');
         await getStore().dispatch(refreshTokenUser());
         return axiosIns(originalRequest);  // retry once ✅
       } catch {

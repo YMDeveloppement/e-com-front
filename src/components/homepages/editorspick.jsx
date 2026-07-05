@@ -15,7 +15,7 @@ export default function EditorsPick() {
 
     return (
         <>
-            <div className="mt-5 arrive-section">
+            <div className="d-none mt-5 arrive-section">
                 <div className="ps-4 sectionTitle d-flex align-items-center justify-content-start gap-4 mb-4">
                     <h4 className='p-0 m-0 '>New Arrivals</h4>
                     <p className='p-0 m-0 mt-1'>Check out our latest products</p>

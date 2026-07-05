@@ -1,0 +1,40 @@
+@use "../variables" as v;
+
+.swip-catg-prd {
+    width: 98% !important;
+    .title-catg{
+       margin-bottom: 1.5rem ; 
+       font-weight: 700;
+    }
+    .swiper-slide {
+        flex-shrink: 0;
+        width: auto !important;
+        height: 100%;
+        position: relative;
+        transition-property: transform;
+        display: block;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        background-color: v.$main-color;
+        color: v.$white;
+        padding: 7px;
+    }
+
+    .swiper-button-prev svg,
+    .swiper-button-next svg {
+        height: 20px;
+    }
+
+    .swiper-button-prev {
+        border-radius:  0 20px  20px 0;
+        left: var(--swiper-navigation-sides-offset, 0px) !important;
+    }
+    
+    .swiper-button-next {
+        border-radius: 20px 0 0 20px;
+        right: var(--swiper-navigation-sides-offset, 0px);
+
+    }
+}

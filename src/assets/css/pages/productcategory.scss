@@ -1,0 +1,13 @@
+@use "../variables" as v;
+
+.product-categories{
+    background-color: v.$light-gray;
+    padding: 1rem;
+    .title-catg{
+        padding: 1rem 1rem .5rem;
+        margin: 0px !important;
+    }
+    .listing-prdt{
+        background-color :v.$white;
+    }
+}

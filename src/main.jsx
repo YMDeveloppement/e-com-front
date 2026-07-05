@@ -6,12 +6,12 @@ import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { store } from '@/plugins/store/index.js'
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter  } from 'react-router-dom';
 
 // Import the Provider
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter >
             <App />
         </BrowserRouter>
     </Provider>

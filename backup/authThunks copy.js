@@ -8,7 +8,6 @@ export const loginUser = createAsyncThunk(
     async (userData, { rejectWithValue }) => {
         try {
             const { data } = await axiosIns.post('/login', userData);
-            console.log('dataLogin' , data)
             setAuthToken(data.access_token);
             return data;
         } catch (err) {
@@ -47,7 +46,6 @@ export const logoutUser = createAsyncThunk(
 export const refreshTokenUser = createAsyncThunk(
     'auth/refreshTokenUser',
     async (_, { dispatch , rejectWithValue }) => {
-        console.log('Im inside refresh ')
         try {
             const { data } = await axiosIns.post('/refresh');
             // Server returns the new user + token immediately after register

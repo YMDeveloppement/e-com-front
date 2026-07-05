@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginUser } from '@/plugins/store/slices/authThunks';
+import { loginUser } from '@/plugins/store/thunks/authThunks';
+import { asynCartWithDB } from '@/plugins/store/thunks/cartThunk.js';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -20,11 +21,15 @@ function Login() {
         if (status == "succeeded") {
             navigate('/')
         }
-        console.log(status)
     }, [status]);
+
     const loginAction = () => {
-        dispatch(loginUser({ email: email, password: password }))
+        dispatch(loginUser({ email: email, password: password })).unwrap().then(() => {
+            console.log('Dispatching cart sync after login');
+            dispatch(asynCartWithDB());
+        })
     }
+
 
     return (
         <>

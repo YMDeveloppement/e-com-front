@@ -48,8 +48,6 @@ export default function AdventagesSection() {
                     spaceBetween={50}
                     slidesPerView={5}
                     navigation={false}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    onSlideChange={() => console.log('slide change')}
                 >
 
                     {volets.map((item, index) => {

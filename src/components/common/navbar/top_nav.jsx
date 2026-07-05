@@ -16,23 +16,60 @@ const TopNav = () => {
         { id: 2, name: 'Euro' },
         { id: 3, name: 'USD' },
     ];
-
+    // Today's Deals
+    // Gift Cards
+    // Sell
+    // Registry
+    // Prime Video
+    // Customer Service
     return (
         <>
             <div className='top_nav nav mx-auto '>
                 <div className='row border-bottom w-100 py-1 px-2  '>
-                    <ul className='d-none col-4  navLinks d-flex  align-items-center  gap-3'>
-                        <li className='active'><a className="link-offset-2 link-underline link-underline-opacity-0" href="#">My Account</a></li>
-                        <li><a className="link-offset-2 link-underline link-underline-opacity-0" href="#">About Us</a></li>
-                        <li><a className="link-offset-2 link-underline link-underline-opacity-0" href="#">Wishlist</a></li>
-                    </ul>
-                    <div className='col-6 navLinks   '>
-                        <li><p>We deliver to you every day from <span className="time">7:00 to 23:00</span></p></li>
+
+                    <div className='col-6 navLinks '>
+                        <nav className=" navbar navbar-expand-lg navbar-light default-nav">
+                            <div className="container-fluid ">
+                                <button className="d-none navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
+                                <div className="collapse navbar-collapse" id="navbarNav">
+                                    <ul className="navbar-nav">
+                                        <li className="nav-item">
+                                            <a className="nav-link active" aria-current="page" href="#">Home</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Shop
+                                            </a>
+                                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <li><a className="dropdown-item" href="#">Action</a></li>
+                                                <li><a className="dropdown-item" href="#">Another action</a></li>
+                                                <li><hr className="dropdown-divider" /></li>
+                                                <li><a className="dropdown-item" href="#">Something else here</a></li>
+                                            </ul>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="#">Fruits & Vegetables</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="#" >Beverages</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="#">Blog</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link " href="#" >Contact</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
                     </div>
                     <div className='col-6 d-flex align-items-center justify-content-end gap-3'>
                         <li>
                             <Form.Select aria-label="Default select example">
-                                {langs.map((lang , index) => (
+                                {langs.map((lang, index) => (
                                     <option key={index} value={lang.id}>{lang.name}</option>
 
                                 ))}
@@ -46,7 +83,7 @@ const TopNav = () => {
                             </Form.Select>
                         </li>
                         <li>
-                            <a className=" link-offset-2 link-underline link-underline-opacity-0" href="#">Order Tracking</a>
+                            <a style={{ color: "#6B7280 !important" }} className=" link-offset-2 link-underline link-underline-opacity-0" href="#">Order Tracking</a>
                         </li>
                     </div>
                 </div>

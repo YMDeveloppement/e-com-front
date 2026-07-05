@@ -31,6 +31,7 @@
     width: 80%;
     margin: 3rem 0 ;
 }
+
 @media (min-width: 992px) {
   .weekly-product-section img {
     max-height: 260px;

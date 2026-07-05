@@ -6,7 +6,6 @@ import { increment, decrement, incrementByAmount } from '@/features/counter/coun
 function TestStore() {
   // ✅ READ from store
   const count = useSelector(function (globalstate){
-    console.log(globalstate); // see the whole store state in console
     return globalstate.counterres.val_countter
   });
 
