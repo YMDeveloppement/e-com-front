@@ -11,6 +11,7 @@ export default function CardProduct({ item }) {
     function addToFavorite() {
         console.log("clicked")
     }
+    const API_URL = 'http://myproject.local';
 
     function addToCard() {
         dispatch(addToCart(item))
@@ -50,7 +51,7 @@ export default function CardProduct({ item }) {
                     </div>
                 }
 
-                <img src={item.image} className="card-img-top" alt={item.title} />
+                <img src={`${API_URL}${item.image}`} className="card-img-top" alt={item.title} />
             </div>
             <div className="px-2 pt-3">
                 {Array.from({ length: 5 }, (_, i) => {

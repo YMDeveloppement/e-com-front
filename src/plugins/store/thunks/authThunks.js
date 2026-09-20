@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosIns from '@/plugins/axiosIns.js'
-import { asynCartWithDB } from '@/plugins/store/thunks/cartThunk.js'
-import { Collapse } from 'react-bootstrap';
+// import { asynCartWithDB } from '@/plugins/store/thunks/cartThunk.js'
+// import { Collapse } from 'react-bootstrap';
 
 export const loginUser = createAsyncThunk(
     'auth/loginUser',

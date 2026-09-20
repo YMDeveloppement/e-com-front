@@ -7,21 +7,39 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import beards from '@/assets/imgs/categories_img/beards.png'
+import beverage from '@/assets/imgs/categories_img/beverage.png'
+import biscuits_snacks from '@/assets/imgs/categories_img/biscuits_snacks.png'
+import breaksfast from '@/assets/imgs/categories_img/breaksfast.png'
+import frozen from '@/assets/imgs/categories_img/frozen.png'
+import grocery from '@/assets/imgs/categories_img/grocery.png'
+import pregnancy from '@/assets/imgs/categories_img/pregnancy.png'
+import vegetable from '@/assets/imgs/categories_img/vegetable.png'
+import stock from  "@/assets/imgs/adventage-img/en-stock.png"
+import delivery from  "@/assets/imgs/adventage-img/logistics-delivery.png"
+import securise from  "@/assets/imgs/adventage-img/paiement-securise.png"
+import superieure from  "@/assets/imgs/adventage-img/qualite-superieure.png"
+
 
 export default function AdventagesSection() {
 
-    let [arr_advantages, setArr_advantages] = useState(["./src/assets/imgs/adventage-img/en-stock.png", "./src/assets/imgs/adventage-img/logistics-delivery.png", "./src/assets/imgs/adventage-img/paiement-securise.png", "./src/assets/imgs/adventage-img/qualite-superieure.png"])
-    let [arr_volets, setArr_volets] = useState([, "./src/assets/imgs/categories_img/beards.png", "./src/assets/imgs/categories_img/beverage.png", "./src/assets/imgs/categories_img/biscuits_snacks.png", "./src/assets/imgs/categories_img/breaksfast.png", "./src/assets/imgs/categories_img/frozen.png", "./src/assets/imgs/categories_img/grocery.png", "./src/assets/imgs/categories_img/pregnancy.png", "./src/assets/imgs/categories_img/vegetable.png"])
+    let [arr_advantages, setArr_advantages] = useState([
+        stock,
+        delivery,
+        securise,
+        superieure
+    ])
+    let [arr_volets, setArr_volets] = useState([beards, beverage, biscuits_snacks, breaksfast, frozen, grocery, pregnancy, vegetable, grocery])
     const [volets, setVolets] = useState([
-        { id: 1, title: "Fruits & Vegetables" , path_img:"./src/assets/imgs/categories_img/beards.png" },
-        { id: 2, title: "Baby & Pregnancy" , path_img:"./src/assets/imgs/categories_img/beverage.png" },
-        { id: 3, title: "Beverages" , path_img:"./src/assets/imgs/categories_img/biscuits_snacks.png" },
-        { id: 4, title: "Meats & Seafood" , path_img:"./src/assets/imgs/categories_img/breaksfast.png" },
-        { id: 5, title: "Biscuits & Snacks" , path_img:"./src/assets/imgs/categories_img/frozen.png" },
-        { id: 6, title: "Breads & Bakery" , path_img:"./src/assets/imgs/categories_img/grocery.png" },
-        { id: 7, title: "Breakfast & Dairy" , path_img:"./src/assets/imgs/categories_img/pregnancy.png" },
-        { id: 8, title: "Frozen Foods" , path_img:"./src/assets/imgs/categories_img/vegetable.png" },
-        { id: 9, title: "Grocery & Staples" , path_img:"./src/assets/imgs/categories_img/grocery.png" },
+        { id: 1, title: "Fruits & Vegetables" , path_img:beards },
+        { id: 2, title: "Baby & Pregnancy" , path_img:beverage },
+        { id: 3, title: "Beverages" , path_img:biscuits_snacks },
+        { id: 4, title: "Meats & Seafood" , path_img:breaksfast },
+        { id: 5, title: "Biscuits & Snacks" , path_img:frozen },
+        { id: 6, title: "Breads & Bakery" , path_img:grocery },
+        { id: 7, title: "Breakfast & Dairy" , path_img:pregnancy },
+        { id: 8, title: "Frozen Foods" , path_img:vegetable },
+        { id: 9, title: "Grocery & Staples" , path_img:grocery },
     ]);
     return (
 

@@ -7,10 +7,10 @@ const categoriesSlice = createSlice({
   initialState,
   reducers: {
     getData(state) {
-        axiosIns.get('products/categories')
-        .then(({categories}) => {
-            state.categories = categories
-        }).catch((ex)=>{})
+        // axiosIns.get('/products/categories')
+        // .then(({categories}) => {
+        //     state.categories = categories
+        // }).catch((ex)=>{})
     },
   },
 })

@@ -3,6 +3,7 @@ import { resetAuth } from '@/plugins/store/slices/authSlice.js';
 import { getStore } from '@/plugins/store/storeAccessor';
 
 const axiosIns = axios.create({
+  // baseURL: 'http://myproject.local/api/core/',
   baseURL: 'http://localhost:8000/api/',
   headers: {
     'Content-Type': 'application/json',

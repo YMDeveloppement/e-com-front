@@ -11,6 +11,7 @@ import { BrowserRouter  } from 'react-router-dom';
 // Import the Provider
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
+        {/* <BrowserRouter  basename="/web"> */}
         <BrowserRouter >
             <App />
         </BrowserRouter>

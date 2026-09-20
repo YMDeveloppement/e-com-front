@@ -6,10 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { asynCartWithDB } from '@/plugins/store/thunks/cartThunk.js'
+import slideImg1 from '@/assets/imgs/img_product/pro1.jpg'
+import slideImg2 from '@/assets/imgs/img_product/pro2.jpg'
+import slideImg3 from '@/assets/imgs/img_product/pro3.jpg'
 export default function MainSection() {
     const dispatch = useDispatch()
     let [arr_products, setArr_products] = useState([])
-    let [img_products, setImg_products] = useState(["/src/assets/imgs/img_product/pro1.jpg", "/src/assets/imgs/img_product/pro2.jpg", "/src/assets/imgs/img_product/pro3.jpg"])
+    let [img_products, setImg_products] = useState([slideImg1, slideImg2, slideImg3])
 
     useEffect(() => {
         axios.get('https://api.escuelajs.co/api/v1/products')

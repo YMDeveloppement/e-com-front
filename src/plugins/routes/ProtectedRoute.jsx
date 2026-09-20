@@ -8,10 +8,11 @@ import routes from '@/plugins/routes/index.jsx';
 const ProtectedRoute = () => {
     const { user, token, roles } = useSelector((state) => state.auth)
     const { role_auth, permission_role } = useSelector((state) => state.global)
+    const location = useLocation();
+    console.log('yes  youa rein protected root'  , user, token, roles , role_auth, permission_role , routes, location)
     if (!token) return <Navigate to='/auth/login' replace></Navigate>
     const matches = matchRoutes(routes, location);
-
-    const permissions = roles.length > 0 ? permission_role[roles[0]] : []
+    const permissions = roles && roles.length > 0 ? permission_role[roles[0]] : []
     // old authorisation -- check by role  
     // const location = useLocation();
     // let allowedRoles = role_auth[location.pathname];
